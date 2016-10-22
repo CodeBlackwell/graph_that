@@ -15,9 +15,9 @@ export default class App extends Component {
         {this.props.children}        
         </article>
         <aside className="aside aside-1" style={CSS.aside1}>
-          <Link to={'/hello'}> What up? </Link>
+          <Link to={'/hello'} style={CSS.link}> What up? </Link>
           <br/>
-          <Link to={'/goodbye'}> Goodbye </Link>
+          <Link to={'/goodbye'} style={CSS.link}> Goodbye </Link>
         </aside>
         <aside className="aside aside-2" style={CSS.aside2}>Aside 2</aside>
         <footer className="footer" style={CSS.footer}>Footer</footer>

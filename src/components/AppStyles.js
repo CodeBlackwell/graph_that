@@ -14,7 +14,7 @@ export default reactCSS({
       padding: '10px',
       flex: '1 100%',
       height: '100px',
-      backgroundColor: 'tomato'
+      backgroundColor: '#10206b'
     },
     footer: {
       padding: '10px',
@@ -34,16 +34,19 @@ export default reactCSS({
     aside1: {
       padding: '10px',
       order: 1,
-      flex: '1 auto',
+      width: 200,
       backgroundColor: 'gold',
       border: '5px solid green'
-
     },
     aside2: {
       padding: '10px',
       order: 3,
       flex: '1 auto',
       backgroundColor: 'hotpink'
+    },
+    link: {
+      border: '1px solid black',
+      fontSize: 30
     }
   }
 })
