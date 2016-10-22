@@ -1,5 +1,5 @@
-const DB_USER = require('./config').DB_USER,
-      DB_PW   = require('./config').DB_PASSWORD
+const DB_USER = require('../config').DB_USER,
+      DB_PW   = require('../config').DB_PASSWORD
 
 
 
