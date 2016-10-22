@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "babel-preset-stage-0": "6.16.0",
+    "bookshelf": "0.10.2",
     "csvtojson": "1.0.3",
     "knex": "0.12.6",
     "mysql": "2.11.1",
