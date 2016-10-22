@@ -21,7 +21,7 @@ export default reactCSS({
       flex: '1 100%',
       height: '75px',
       order: 3,
-      backgroundColor: 'lightgreen'
+      backgroundColor: '#666666'
     },
     main: {
       padding: '10px',
