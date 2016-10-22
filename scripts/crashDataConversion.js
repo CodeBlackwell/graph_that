@@ -1,9 +1,9 @@
 "use strict"
 
-var bookshelf = require('../bookshelf')
+var bookshelf = require('../database/bookshelf')
 
 module.exports = function(knex) {
-  
+
   knex.schema.createTableIfNotExists("plane_crashes_1908", function(table) {
     
     table.increments('crash_id').primary();
@@ -19,13 +19,13 @@ module.exports = function(knex) {
     table.integer('fatalities')
     table.integer('ground')
     table.string('summary')
-  }).then(function(){ console.log('done')})
+  })
 
   var User = bookshelf.Model.extend({
     tableName: 'users'
   })
 
-  new User({name: 'New User'}).save().then(function(){
+  new User({name: 'New User'}).save().then(function() {
     console.log('saved a user')
   })
 
