@@ -2,6 +2,9 @@ var express = require('express');
 var path = require('path');
 var httpProxy = require('http-proxy');
 var publicPath = path.resolve(__dirname, 'public');
+var knex = require('knex')
+
+var planeDataImport = require('./scripts/crashDataConversion')(knex)
 
 // We need to add a configuration to our proxy server,
 // as we are now proxying outside localhost
