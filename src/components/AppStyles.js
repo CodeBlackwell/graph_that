@@ -12,15 +12,15 @@ export default reactCSS({
     },
     header: {
       padding: '10px',
-      flex: '1 100%',
-      height: '100px',
+      flex:    '1 100%',
+      height:  '100px',
       backgroundColor: '#10206b'
     },
     footer: {
       padding: '10px',
-      flex: '1 100%',
-      height: '75px',
-      order: 3,
+      flex:    '1 100%',
+      height:  '75px',
+      order:   3,
       backgroundColor: '#666666'
     },
     main: {
@@ -35,8 +35,8 @@ export default reactCSS({
       padding: '10px',
       order: 1,
       width: 200,
-      backgroundColor: 'gold',
-      border: '5px solid green'
+      border: '5px solid green',
+      backgroundColor: 'gold'
     },
     aside2: {
       padding: '10px',
@@ -45,8 +45,10 @@ export default reactCSS({
       backgroundColor: 'hotpink'
     },
     link: {
-      border: '1px solid black',
-      fontSize: 30
+      fontFamily: 'Arial, Helvetica, sans-serif',
+      fontSize: 17,
+      padding: '12px 24px',
+      color: '#999',
     }
   }
 })
