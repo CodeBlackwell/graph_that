@@ -17,7 +17,7 @@ export function getGoodbyeWorld() {
 }
 
 export function fetchTweets(params = 'thestylisted') {
-  const URL = 'localhost:3000/tweets/' + params.screen_name
+  const URL = 'http://localhost:3000/tweets/' + params
   const tweets = axios.get(URL)
 
   return {
