@@ -48,7 +48,7 @@ export default reactCSS({
       fontFamily: 'Arial, Helvetica, sans-serif',
       fontSize: 17,
       padding: '12px 24px',
-      color: '#999',
+      color: '#999'
     }
   }
 })
