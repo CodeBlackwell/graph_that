@@ -20,7 +20,6 @@ class TweetBox extends Component {
   }
 
   render() {
-    console.log('my current props', this.props)
     return (
       <aside className="aside aside-2" style={CSS.aside2}>
         <table>
@@ -35,7 +34,6 @@ class TweetBox extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return { username: state.twitterFeed.username, tweets: state.twitterFeed.tweets }
 }
 
