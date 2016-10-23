@@ -5,23 +5,22 @@ const initialState = {
   tweets: [{status: 'We must take over the world', id: 219230}]
 }
 
-export function tweets(state = initialState, action) {
+export default (state = initialState, action) => {
 
   const reducer = {
-    FETCH_TWEETS: function(){
+    FETCH_TWEETS: () => {
       return Object.assign({}, state, {
         username: action.payload.data[0].user.screen_name,
         tweets: action.payload.data.map(tweet => {
-          return { status: tweet.text, id: tweet.id}
+          return { status: tweet.text, id: tweet.id }
         })
       })
     }
   }
 
-  if(reducer[action.type]) {
+  if (reducer[action.type]) {
     return reducer[action.type]()
   }
-
   return state
-
 }
+

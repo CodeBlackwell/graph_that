@@ -8,7 +8,7 @@ import CSS from '../components/AppStyles'
 class TweetBox extends Component {
 
   componentWillMount() {
-    this.props.dispatch(fetchTweets())
+    this.props.fetchTweets()
   }
 
   renderTweet(tweet) {
@@ -37,8 +37,8 @@ function mapStateToProps(state) {
   return { username: state.twitterFeed.username, tweets: state.twitterFeed.tweets }
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ fetchTweets }, dispatch)
-// }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchTweets }, dispatch)
+}
 
-export default connect(mapStateToProps)(TweetBox)
+export default connect(mapStateToProps, mapDispatchToProps)(TweetBox)
