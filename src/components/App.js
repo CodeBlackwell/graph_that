@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Link } from 'react-router'
 
-import GoodbyeWorld from './GoodbyeWorld'
-import HelloWorld from './HelloWorld'
 import CSS from './AppStyles'
+import TweetBox from '../containers/Tweetbox'
 
 export default class App extends Component {
   render() {
@@ -19,7 +18,7 @@ export default class App extends Component {
           <br/>
           <Link to={'/goodbye'} style={CSS.link}> Goodbye </Link>
         </aside>
-        <aside className="aside aside-2" style={CSS.aside2}>Aside 2</aside>
+        <TweetBox style={CSS.aside2}>Aside 2</TweetBox>
         <footer className="footer" style={CSS.footer}>Footer</footer>
       </div>      
     )
