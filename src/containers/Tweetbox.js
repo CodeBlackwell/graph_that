@@ -13,8 +13,8 @@ class TweetBox extends Component {
 
   renderTweet(tweet) {
     return (
-      <tr key={tweet.id} className="tweet">
-        <td>{tweet.text}</td>
+      <tr key={tweet.id} className="tweet" style={CSS.tweet}>
+        <td>{tweet.status}</td>
       </tr>
     )
   }
@@ -25,8 +25,8 @@ class TweetBox extends Component {
       <aside className="aside aside-2" style={CSS.aside2}>
         <table>
           <tbody>
-            <tr><th>tweets</th></tr>
-       
+            <tr><th>{this.props.username}</th></tr>
+            {this.props.tweets.map(this.renderTweet)}
           </tbody>
         </table>
       </aside>
@@ -36,7 +36,7 @@ class TweetBox extends Component {
 
 function mapStateToProps(state) {
   console.log(state)
-  return { username: state.username, tweets: state.tweets}
+  return { username: state.twitterFeed.username, tweets: state.twitterFeed.tweets }
 }
 
 // function mapDispatchToProps(dispatch) {

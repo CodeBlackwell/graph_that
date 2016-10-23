@@ -8,12 +8,11 @@ export default reactCSS({
       flexFlow:   'row wrap',
       fontWeight: 'bold',
       textAlign:  'center'
-      // backgroundColor: 'black'
     },
     header: {
       padding: '10px',
       flex:    '1 100%',
-      height:  '100px',
+      height:  '75px',
       backgroundColor: '#10206b'
     },
     footer: {
@@ -41,7 +40,7 @@ export default reactCSS({
     aside2: {
       padding: '10px',
       order: 3,
-      flex: '1 auto',
+      width: '400px',
       backgroundColor: 'hotpink'
     },
     link: {
@@ -49,6 +48,10 @@ export default reactCSS({
       fontSize: 17,
       padding: '12px 24px',
       color: '#999'
+    },
+    tweet: {
+      color: 'deepskyblue',
+      backgroundColor: 'black'
     }
   }
 })

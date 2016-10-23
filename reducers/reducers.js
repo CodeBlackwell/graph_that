@@ -3,6 +3,6 @@ import { greeting } from './reducerGreeting'
 import { tweets } from './reducerTweets'
 
 export default combineReducers({
-  tweets,
+  twitterFeed: tweets,
   greeting
 })
