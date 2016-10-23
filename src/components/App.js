@@ -9,7 +9,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="wrapper" style={CSS.wrapper}>
-        <header className="header" style={CSS.header}>Header</header>
+        <header className="header" style={CSS.header}><h1>Graph That!</h1></header>
         <article className="main" style={CSS.main}>
         {this.props.children}        
         </article>
