@@ -21,6 +21,7 @@
     "react-router": "^2.4.1",
     "reactcss": "1.0.9",
     "redux": "^3.3.1",
+    "redux-infinite-scroll": "1.0.9",
     "redux-promise": "0.5.3",
     "twitter": "1.4.0",
     "webpack": "^1.9.11"
