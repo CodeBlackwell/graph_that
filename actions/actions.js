@@ -16,8 +16,8 @@ export function getGoodbyeWorld() {
   }
 }
 
-export function fetchTweets(params = 'thestylisted') {
-  const URL = 'http://localhost:3000/tweets/' + params
+export function fetchTweets(username = 'thestylisted', oldestTweetId) {
+  const URL = 'http://localhost:3000/tweets/' + username
   const tweets = axios.get(URL)
 
   return {

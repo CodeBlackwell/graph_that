@@ -7,25 +7,33 @@ import CSS from '../components/AppStyles'
 
 class TweetBox extends Component {
 
+  constructor(props){
+    super(props)
+
+    this.state = {
+      oldestTweetId: Math.min(Object.keys(this.props.tweets))
+    }
+  }
+
   componentWillMount() {
+
     this.props.fetchTweets()
   }
 
   _renderTweets(tweetsHash) {
-
+    //create an array of sorted tweet id's (Chronologic order)
     var sortedIndexKeys = Object.keys(tweetsHash).sort(function(a, b) { return b - a })
 
     //create an array of tweets
     var sortedTweets = sortedIndexKeys.map(function(indexKey){
       return {id: indexKey, status: tweetsHash[indexKey].text}
     })
-    console.log('tell me about sortedTweets: ', sortedTweets)
     //return jsx elements
     return sortedTweets.map(function(tweet){
       return (
-        <tr key={tweet.id} className="tweet" style={CSS.tweet}>
-          <td>{tweet.status}</td>
-        </tr>
+        <div key={tweet.id} className="tweet" style={CSS.tweet}>
+          {tweet.status}
+        </div>
       )
     })
   }
@@ -33,12 +41,8 @@ class TweetBox extends Component {
   render() {
     return (
       <aside className="aside aside-2" style={CSS.aside2}>
-        <table>
-          <tbody>
-            <tr><th>{this.props.username}</th></tr>
-            {this._renderTweets(this.props.tweets)}
-          </tbody>
-        </table>
+        <h2>{this.props.username}</h2>
+          {this._renderTweets(this.props.tweets)}
       </aside>
     )
   }

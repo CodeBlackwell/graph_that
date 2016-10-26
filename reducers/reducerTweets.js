@@ -20,21 +20,26 @@ function indexTweets(arrOfTweets) {
 }
 
 export default (state = initialState, action) => {
-  console.log('current state of TwitterFeed: ', state)
-  const reducer = {
 
-    FETCH_TWEETS: () => {
+  const reducerOperations = {
+
+    FETCH_TWEETS() {
       const username = action.payload.data[0].user.screen_name
+
+      //clear the tweetHash if not the same user
+      if (username !== state.username) {
+        state.tweets = {}
+      }
+
       return Object.assign({}, state, {
         username,
         tweets: Object.assign({}, state.tweets, indexTweets(action.payload.data))
       })
     }
-
   }
 
-  if (reducer[action.type]) {
-    return reducer[action.type]()
+  if (reducerOperations[action.type]) {
+    return reducerOperations[action.type]()
   }
   return state
 }

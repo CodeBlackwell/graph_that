@@ -51,6 +51,7 @@ export default reactCSS({
     },
     tweet: {
       color: 'deepskyblue',
+      margin: 10,
       backgroundColor: 'black'
     }
   }
