@@ -11,12 +11,23 @@ class TweetBox extends Component {
     this.props.fetchTweets()
   }
 
-  renderTweet(tweet) {
-    return (
-      <tr key={tweet.id} className="tweet" style={CSS.tweet}>
-        <td>{tweet.status}</td>
-      </tr>
-    )
+  _renderTweets(tweetsHash) {
+
+    var sortedIndexKeys = Object.keys(tweetsHash).sort(function(a, b) { return b - a })
+
+    //create an array of tweets
+    var sortedTweets = sortedIndexKeys.map(function(indexKey){
+      return {id: indexKey, status: tweetsHash[indexKey].text}
+    })
+    console.log('tell me about sortedTweets: ', sortedTweets)
+    //return jsx elements
+    return sortedTweets.map(function(tweet){
+      return (
+        <tr key={tweet.id} className="tweet" style={CSS.tweet}>
+          <td>{tweet.status}</td>
+        </tr>
+      )
+    })
   }
 
   render() {
@@ -25,7 +36,7 @@ class TweetBox extends Component {
         <table>
           <tbody>
             <tr><th>{this.props.username}</th></tr>
-            {this.props.tweets.map(this.renderTweet)}
+            {this._renderTweets(this.props.tweets)}
           </tbody>
         </table>
       </aside>
