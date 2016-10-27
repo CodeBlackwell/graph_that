@@ -37,7 +37,7 @@ class TweetBox extends Component {
       return (
         <div key={tweet.id} className="tweet" style={CSS.tweet}>
           {tweet.status}
-          <h6>{formatDate(tweet.createdAt).fromNow()}</h6>
+          <div style={CSS.timestamp}>{formatDate(tweet.createdAt).fromNow()}</div>
         </div>
       )
     })

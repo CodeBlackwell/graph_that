@@ -38,7 +38,7 @@ export default reactCSS({
       backgroundColor: 'gold'
     },
     aside2: {
-      padding: '10px',
+      padding: '2px',
       order: 3,
       width: '400px',
       backgroundColor: 'hotpink'
@@ -51,8 +51,13 @@ export default reactCSS({
     },
     tweet: {
       color: 'deepskyblue',
-      margin: 10,
-      backgroundColor: 'black'
+      margin: 2,
+      backgroundColor: 'black',
+      textAlign: 'center'
+    },
+    timestamp: {
+      color: 'white',
+      fontSize: '12px'
     }
   }
 })
