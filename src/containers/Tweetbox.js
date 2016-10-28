@@ -29,12 +29,10 @@ class TweetBox extends Component {
   }
 
   _loadMore() {
-    console.log('_loadMore has been called:')
     this.props.fetchTweets(this.props.username, this.props.oldestTweetId)
   }
 
   render() {
-    console.log('this is the oldest tweet id: ', this.props.oldestTweetId )
     return (
       <aside className="aside aside-2" style={CSS.aside2}>
         <h2>{this.props.username}</h2>

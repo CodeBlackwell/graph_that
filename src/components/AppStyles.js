@@ -53,6 +53,7 @@ export default reactCSS({
       color: 'deepskyblue',
       margin: 2,
       backgroundColor: 'black',
+      borderRadius: '10px',
       textAlign: 'center'
     },
     timestamp: {
@@ -60,6 +61,6 @@ export default reactCSS({
       fontSize: '12px',
       paddingLeft: 20,
       textAlign: 'left'
-    },
+    }
   }
 })
