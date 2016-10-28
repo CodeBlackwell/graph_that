@@ -41,7 +41,7 @@ export default reactCSS({
       padding: '2px',
       order: 3,
       width: '400px',
-      backgroundColor: 'hotpink'
+      backgroundColor: 'hotpink',
     },
     link: {
       fontFamily: 'Arial, Helvetica, sans-serif',
@@ -57,7 +57,9 @@ export default reactCSS({
     },
     timestamp: {
       color: 'white',
-      fontSize: '12px'
-    }
+      fontSize: '12px',
+      paddingLeft: 20,
+      textAlign: 'left'
+    },
   }
 })

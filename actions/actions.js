@@ -19,9 +19,12 @@ export function getGoodbyeWorld() {
 export function fetchTweets(username = 'thestylisted', oldestTweetId) {
   oldestTweetId = oldestTweetId || ''
   const URL = 'http://localhost:3000/tweets/' + username
+
+  console.log('this is the oldest tweet id within fetchTweets', oldestTweetId)
+
   const params = { max_id: oldestTweetId}
-  const tweets = axios.get(URL, params)
-  console.log('fetching user: ' + username, ' with oldestTweetId: ' + oldestTweetId)
+
+  const tweets = axios.get(URL, {params: params})
   return {
     type: FETCH_TWEETS,
     payload: tweets
