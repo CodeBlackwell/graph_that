@@ -1,14 +1,10 @@
 import { FETCH_TWEETS } from '../actions/actions'
-import exampleTweet from '../test/exampleTweet'
-
-const exampleTweetId = exampleTweet.id
-
 
 
 const initialState = {
-  username: exampleTweet.user.screen_name,
-  tweets: { 782810025337073700: exampleTweet },
-  oldestTweetId: 78281
+  username: 'TheStylisted',
+  tweets: {},
+  oldestTweetId: ''
 }
 
 //creates a hash of tweets indexed by id
@@ -25,6 +21,7 @@ export default (state = initialState, action) => {
   const reducerOperations = {
 
     FETCH_TWEETS() {
+
       const username = action.payload.data[0].user.screen_name
 
       //clear the tweetHash if not the same user

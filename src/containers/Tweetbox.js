@@ -10,35 +10,22 @@ import CSS from '../components/AppStyles'
 class TweetBox extends Component {
 
 
-  componentWillMount() {
-    this.props.fetchTweets()
+  _renderTweet(tweet) {
+    return (
+      <div key={tweet.id} className="tweet" style={CSS.tweet}>
+          {tweet.text}
+        <div style={CSS.timestamp}>
+          {formatDate(tweet.created_at).fromNow()}
+        </div>
+      </div>
+    )
   }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      oldestTweetId: Math.min(Object.keys(nextProps.tweets)) 
-    })
-  }
-
-
 
   _renderTweets(tweetsHash) {
-    //create an array of sorted tweet id's (Chronologic order)
-    var sortedIndexKeys = Object.keys(tweetsHash).sort(function(a, b) { return b - a })
+    const sortedIndexKeys = Object.keys(tweetsHash).sort(function(a, b) { return b - a })
+    const sortedTweets = sortedIndexKeys.map(function(indexKey) { return tweetsHash[indexKey] })
 
-    //create a sorted array of tweets
-    var sortedTweets = sortedIndexKeys.map(function(indexKey) {
-      return { id: indexKey, status: tweetsHash[indexKey].text, createdAt: tweetsHash[indexKey].created_at }
-    })
-    //return jsx <div> elements for each tweet
-    return sortedTweets.map(function(tweet){
-      return (
-        <div key={tweet.id} className="tweet" style={CSS.tweet}>
-          {tweet.status}
-          <div style={CSS.timestamp}>{formatDate(tweet.createdAt).fromNow()}</div>
-        </div>
-      )
-    })
+    return sortedTweets.map(this._renderTweet)
   }
 
   _loadMore() {
@@ -46,14 +33,18 @@ class TweetBox extends Component {
   }
 
   render() {
-    debugger
+
     return (
       <aside className="aside aside-2" style={CSS.aside2}>
         <h2>{this.props.username}</h2>
+        <div>
           <InfiniteScroll
-            items={this._renderTweets()}
+            items={this._renderTweets(this.props.tweets)}
             loadMore={this._loadMore.bind(this)}
+            containerHeight='400px'
+            isScrollable={false}
           />
+        </div>
       </aside>
     )
   }
@@ -71,12 +62,13 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchTweets }, dispatch)
 }
 
+export default connect(mapStateToProps, mapDispatchToProps)(TweetBox)
+
 /**
 *@params {string} dateString - a date from twitter formatted "Wed Oct 26 18:31:56 +0000 2016"
 *@returns {string} a date formatted to "YYYY-MM-DD HH:mm:ss"  
 */
 function formatDate(dateString) {
-
   const months = {
     Jan: 1,
     Feb: 2,
@@ -100,5 +92,3 @@ function formatDate(dateString) {
   result = result.join('-') + " " + temp[3]
   return moment(result)
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(TweetBox)
