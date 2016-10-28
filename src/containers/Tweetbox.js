@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import moment from 'moment'
+import InfiniteScroll from 'redux-infinite-scroll'
 
 import { fetchTweets } from '../../actions/actions'
 import CSS from '../components/AppStyles'
@@ -40,12 +41,19 @@ class TweetBox extends Component {
     })
   }
 
-  render() {
+  _loadMore() {
+    this.props.fetchTweets(this.props.username, this.props.oldestTweetId)
+  }
 
+  render() {
+    debugger
     return (
       <aside className="aside aside-2" style={CSS.aside2}>
         <h2>{this.props.username}</h2>
-          {this._renderTweets(this.props.tweets)}
+          <InfiniteScroll
+            items={this._renderTweets()}
+            loadMore={this._loadMore.bind(this)}
+          />
       </aside>
     )
   }
