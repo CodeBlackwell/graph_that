@@ -7,14 +7,15 @@ const exampleTweetId = exampleTweet.id
 
 const initialState = {
   username: exampleTweet.user.screen_name,
-  tweets: {0: exampleTweet}
+  tweets: { 782810025337073700: exampleTweet },
+  oldestTweetId: 78281
 }
 
 //creates a hash of tweets indexed by id
 function indexTweets(arrOfTweets) {
   var indexedTweets = {}
   arrOfTweets.forEach(tweet => {
-    indexedTweets[tweet.id] = tweet
+    indexedTweets[tweet.id] = { created_at: tweet.created_at, id: tweet.id, text: tweet.text }
   })
   return indexedTweets
 }
@@ -30,10 +31,10 @@ export default (state = initialState, action) => {
       if (username !== state.username) {
         state.tweets = {}
       }
-
       return Object.assign({}, state, {
         username,
-        tweets: Object.assign({}, state.tweets, indexTweets(action.payload.data))
+        tweets: Object.assign({}, state.tweets, indexTweets(action.payload.data)),
+        oldestTweetId: Object.keys(indexTweets(action.payload.data)).sort((a, b) => b - a)[0]
       })
     }
   }

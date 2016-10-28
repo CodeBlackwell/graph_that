@@ -8,31 +8,28 @@ import CSS from '../components/AppStyles'
 
 class TweetBox extends Component {
 
-  constructor(props){
-    super(props)
-
-    this.state = {
-      oldestTweetId: Math.min(Object.keys(this.props.tweets))
-    }
-  }
 
   componentWillMount() {
-
     this.props.fetchTweets()
   }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      oldestTweetId: Math.min(Object.keys(nextProps.tweets)) 
+    })
+  }
+
+
 
   _renderTweets(tweetsHash) {
     //create an array of sorted tweet id's (Chronologic order)
     var sortedIndexKeys = Object.keys(tweetsHash).sort(function(a, b) { return b - a })
 
-    
-
-
-    //create an array of tweets
+    //create a sorted array of tweets
     var sortedTweets = sortedIndexKeys.map(function(indexKey) {
       return { id: indexKey, status: tweetsHash[indexKey].text, createdAt: tweetsHash[indexKey].created_at }
     })
-    //return jsx elements
+    //return jsx <div> elements for each tweet
     return sortedTweets.map(function(tweet){
       return (
         <div key={tweet.id} className="tweet" style={CSS.tweet}>
@@ -55,7 +52,11 @@ class TweetBox extends Component {
 }
 
 function mapStateToProps(state) {
-  return { username: state.twitterFeed.username, tweets: state.twitterFeed.tweets }
+  return { 
+    username: state.twitterFeed.username, 
+    tweets: state.twitterFeed.tweets, 
+    oldestTweetId: state.twitterFeed.oldestTweetId 
+  }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -82,8 +83,6 @@ function formatDate(dateString) {
     Nov: 11,
     Dec: 12
   }
-
-  console.log("this is datestring", dateString)
 
   var result = [],
       temp
