@@ -18,18 +18,20 @@ converter.fromFile("/Users/tonywinglau/Desktop/Datasets/Airplane_Crashes_and_Fat
   }
   crashRecords.forEach(record => {
     for(var key in record) {
-      if(key === 'Flight #') {
+      if (key === 'Flight #') {
         var temp = record[key]
         record['Flight'] = temp
-        record[key] = undefined
+        delete record[key]
+      } else if (key === 'cn/In') {
+        delete record[key]
+      } else if (record[key] === '') {
+        record[key] = null
       }
     }
   })
-  // knex('plane_crashes_1908').insert(crashRecords)
-  // .then(() => console.log('insertion complete'))
-  // .catch(error => { throw error })
-  console.log(crashRecords[0])
-
+  knex('plane_crashes_1908').insert(crashRecords)
+  .then(() => console.log('insertion complete. Enjoy your data sir'))
+  .catch(error => { throw error })
 })
 
 
