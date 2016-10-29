@@ -1,40 +1,35 @@
 "use strict"
+var knex = require('../database/bookshelf').knex
+var bookshelf = require('../database/bookshelf').bookshelf
+// var Promise = require('bluebird')
 
-var bookshelf = require('../database/bookshelf')
 
-module.exports = function(knex) {
+var PlaneCrash = bookshelf.Model.extend({
+  tableName: 'plane_crashes_1908'
+})
 
-  knex.schema.createTableIfNotExists("plane_crashes_1908", function(table) {
-    
-    table.increments('crash_id').primary();
-    table.string('date')
-    table.string('time')
-    table.string('location')
-    table.string('operator')
-    table.string('flight_#')
-    table.string('route')
-    table.string('type')
-    table.string('registration')
-    table.integer('aboard')
-    table.integer('fatalities')
-    table.integer('ground')
-    table.string('summary')
+//Converter Class 
+const Converter = require("csvtojson").Converter
+const converter = new Converter({})
+
+converter.fromFile("/Users/tonywinglau/Desktop/Datasets/Airplane_Crashes_and_Fatalities_since_1908.csv", function(err, crashRecords) {
+  if(err){
+    throw err
+  }
+  crashRecords.forEach(record => {
+    for(var key in record) {
+      if(key === 'Flight #') {
+        var temp = record[key]
+        record['Flight'] = temp
+        record[key] = undefined
+      }
+    }
   })
+  // knex('plane_crashes_1908').insert(crashRecords)
+  // .then(() => console.log('insertion complete'))
+  // .catch(error => { throw error })
+  console.log(crashRecords[0])
 
-  var User = bookshelf.Model.extend({
-    tableName: 'users'
-  })
+})
 
-  new User({name: 'New User'}).save().then(function() {
-    console.log('saved a user')
-  })
-
-  //Converter Class 
-  const Converter = require("csvtojson").Converter;
-  const converter = new Converter({});
-
-  converter.fromFile("/Users/tonywinglau/Desktop/Datasets/Airplane_Crashes_and_Fatalities_since_1908.csv", function(err, result) {
-   console.log(result[0])
-  });
-}
 
