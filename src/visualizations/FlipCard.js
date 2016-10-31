@@ -9,13 +9,14 @@ class FlipCard extends Component {
     super(props)
 
     this.state = {
-      cardSide: 'data'
+      displayGraph: false
     }
   }
 
-  render(){
-
+  render() {
+    // {this.state.displayGraph ? this._renderGraph() : this._renderTable()}
   }
+
 }
 
 
