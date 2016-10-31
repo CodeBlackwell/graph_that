@@ -1,7 +1,5 @@
 var DB_USER = require('../config').DB_USER,
-    DB_PW   = require('../config').DB_PASSWORD,
-    Schema  = require('./Schema'),
-    _       = require('lodash')
+    DB_PW   = require('../config').DB_PASSWORD
 
 
 
