@@ -1,0 +1,34 @@
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+
+
+class FlipCard extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      cardSide: 'data'
+    }
+  }
+
+  render(){
+
+  }
+}
+
+
+
+
+
+
+function mapStateToProps(state) {
+  return
+}
+
+function mapDispatchToProps(dispatch){
+  return
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FlipCard)
