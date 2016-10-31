@@ -10,9 +10,13 @@ const flipSides = {
   back: FlipCardBack
 }
 
-const fakeData = [{id: 1, location: 'germany', fatalities: 10}, {id: 2, location: 'france', fatalities: 18}, {id: 3, location: 'Nigeria', fatalities: 15}]
+const fakeData = [
+  {id: 1, location: 'germany', fatalities: 10, summary: 'Weather'},
+  {id: 2, location: 'france', fatalities: 18, summary: 'SAM Missile'}, 
+  {id: 3, location: 'Nigeria', fatalities: 15, summary: 'Ocean'}
+]
 
-class FlipCard extends Component {
+export default class FlipCard extends Component {
   constructor(props) {
     super(props)
 
@@ -33,27 +37,11 @@ class FlipCard extends Component {
     const DisplayComponent = flipSides[this.state.displaySide]
 
     return (
-      <div onClick={this._flipCard} className='flip3D'>
-         
+      <div onClick={this._flipCard} className='flip3D'>         
         <DisplayComponent dataArray={fakeData} />
       </div>
     )
-    // { this.state.displayGraph ? this._renderGraph() : this._renderTable() } => will instead be handled by CSS with transforms
   }
 
 }
 
-
-
-
-
-
-function mapStateToProps(state) {
-  return {}
-}
-
-function mapDispatchToProps(dispatch){
-  return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FlipCard)

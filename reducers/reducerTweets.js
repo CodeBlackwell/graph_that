@@ -28,8 +28,6 @@ export default (state = initialState, action) => {
       if (username !== state.username) {
         state.tweets = {}
       }
-      console.log('Math.min operation result: ', Math.min.apply(null, Object.keys(indexTweets(action.payload.data))))
-      console.log('creating a new state for TwitterFeed')
       return Object.assign({}, state, {
         username,
         tweets: Object.assign({}, state.tweets, indexTweets(action.payload.data)),
