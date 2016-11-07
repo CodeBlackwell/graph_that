@@ -29,7 +29,8 @@ export function fetchTweets(username = 'thestylisted', oldestTweetId) {
   }
 }
 
-export function fetchCrashData() {
+export function fetchPlaneCrashData() {
+  console.log('fetching Plane Crash Data')
   const URL = 'http://localhost:3000/data/planecrashes'
   const crashData = axios.get(URL)
   return {

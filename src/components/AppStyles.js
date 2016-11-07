@@ -26,8 +26,10 @@ export default reactCSS({
       padding: '10px',
       flex: '3 0px',
       minHeight: '400px',
+      maxHeight: '453px',
       order: 2,
       textAlign: 'left',
+      overflow: 'auto',
       backgroundColor: 'deepskyblue'
     },
     aside1: {
@@ -61,6 +63,12 @@ export default reactCSS({
       fontSize: '12px',
       paddingLeft: 20,
       textAlign: 'left'
+    },
+    table: {
+      border: '1px solid black',
+      maxHeight: '400px',
+      overflow: 'auto'
+
     }
   }
 })

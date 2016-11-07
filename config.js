@@ -1,6 +1,6 @@
 module.exports = {
-  DB_USER: process.env.DB_USER,
-  DB_PASSWORD: process.env.DB_PASSWORD,
+  DB_USER:                 process.env.DATABASE_USER,
+  DB_PASSWORD:             process.env.DB_PASSWORD, 
   TWITTER_CONSUMER_KEY:    process.env.TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET: process.env.TWITTER_CONSUMER_SECRET,
   TWITTER_ACCESS_TOKEN:    process.env.TWITTER_ACCESS_TOKEN,

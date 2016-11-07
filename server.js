@@ -1,14 +1,14 @@
-var express = require('express');
-var path = require('path');
-var httpProxy = require('http-proxy');
-var publicPath = path.resolve(__dirname, 'public');
+var express = require('express')
+var path = require('path')
+var httpProxy = require('http-proxy')
+var publicPath = path.resolve(__dirname, 'public')
 var Twitter = require('twitter')
 var bodyParser = require('body-parser')
-
-
+var Promise = require('bluebird')
+var knex = require('./database/bookshelf').knex
 var config = require('./config')
 var router = require('./router')
-var knex = require('./database/').knex
+  
 
 var client = new Twitter({
   consumer_key: config.TWITTER_CONSUMER_KEY,
